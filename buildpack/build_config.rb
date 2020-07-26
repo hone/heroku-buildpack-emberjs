@@ -5,11 +5,12 @@ def gem_config(conf)
   conf.gem File.expand_path(File.dirname(__FILE__))
   conf.gem core: 'mruby-sprintf'
   conf.gem core: 'mruby-time'
+  conf.gem core: 'mruby-print'
   conf.gem mgem: 'mruby-simple-random'
   conf.gem github: 'hone/mruby-io', branch: 'popen_status'
   conf.gem github: 'hone/mruby-process', branch: 'header'
   conf.gem github: 'mattn/mruby-onig-regexp', checksum_hash: '4873e87fc1842e8e2a417f6071b63a7d91523ef4'
-  conf.enable_cxx_abi
+  #conf.enable_cxx_abi
 end
 
 MRuby::Build.new do |conf|

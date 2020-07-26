@@ -5,7 +5,7 @@ module Buildpack::Commands
     include Shell
 
     def self.detect(options)
-      options["test"]
+      options[1] == "test"
     end
 
     def initialize(output_io, error_io, build_dir, env_dir)

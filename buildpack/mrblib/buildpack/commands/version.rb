@@ -1,7 +1,7 @@
 module Buildpack::Commands
   class Version
     def self.detect(options)
-      options["--version"] || options["-v"]
+      options[1] == "--version" || options[1] == "-v"
     end
 
     def initialize(output_io, error_io)

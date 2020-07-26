@@ -1,5 +1,6 @@
 #!/bin/bash
 
 BP_DIR=$(cd $(dirname ${0:-}); cd ..; pwd)
+export BUILDPACK_LOG_FILE=/dev/null
 
 $BP_DIR/vendor/buildpack compile $1 $2 $3
