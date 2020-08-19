@@ -10,7 +10,7 @@ This is a [Heroku Buildpack](http://devcenter.heroku.com/articles/buildpacks) fo
 This buildpack has a binary component, so it needs to be compiled beforehand. It's easier just to use the buildpack with the prebuilt binary.
 
 ```
-$ heroku buildpacks:set https://github.com/heroku/heroku-buildpack-emberjs.git
+$ heroku buildpacks:set https://codon-buildpacks.s3.amazonaws.com/buildpacks/heroku/emberjs.tgz
 ```
 
 Once the buildpack is set, you can `git push heroku master` like any other Heroku application.
@@ -21,7 +21,7 @@ Deploying a standard ember.js app on Heroku is simple. You can run the following
 
 ```
 $ heroku create
-$ heroku buildpacks:set https://github.com/heroku/heroku-buildpack-emberjs.git
+$ heroku buildpacks:set https://codon-buildpacks.s3.amazonaws.com/buildpacks/heroku/emberjs.tgz
 $ git push heroku master
 $ heroku open
 ```
@@ -32,10 +32,28 @@ Deploying an ember fastboot on Heroku is just as simple. You can run the followi
 
 ```
 $ heroku create
-$ heroku buildpacks:set https://github.com/heroku/heroku-buildpack-emberjs.git
+$ heroku buildpacks:set https://codon-buildpacks.s3.amazonaws.com/buildpacks/heroku/emberjs.tgz
 $ git push heroku master
 $ heroku open
 ```
+
+### Problems
+
+If you get an error setting the buildpack like the following:
+
+```
+$ heroku buildpacks:set https://codon-buildpacks.s3.amazonaws.com/buildpacks/heroku/emberjs.tgz
+▸ Invalid buildpack `heroku/emberjs`
+```
+
+This means that `npm` is having issues keeping the core heroku toolbelt plugins up to date. To fix this you can run these commands:
+
+```
+$ rm -rf ~/.heroku/node_modules/heroku-apps
+$ heroku update
+```
+
+This causes the core plugins to be redownloaded with the latest version.
 
 ## Architecture
 
