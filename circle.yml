@@ -1,0 +1,18 @@
+machine:
+  services:
+    - docker
+  ruby:
+    version: ruby-2.3.0
+  node:
+    version: 5.8.0
+dependencies:
+  pre:
+    - npm install -g npm
+  override:
+    - rake fixtures
+    - cd buildpack && bundle install --path vendor/bundle
+  cache_directories:
+    - "buildpack/spec/fixtures"
+test:
+  override:
+    - cd buildpack && docker-compose run mtest && docker-compose run bintest

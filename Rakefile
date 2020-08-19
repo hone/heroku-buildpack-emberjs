@@ -47,3 +47,17 @@ namespace :dev do
 
   end
 end
+
+desc "Setup Fixtures"
+task :fixtures do
+  cwd = Dir.pwd
+  FileUtils.mkdir_p("#{cwd}/buildpack/spec/fixtures")
+  Dir.chdir("#{cwd}/buildpack/spec/fixtures") do
+    %w(hone/github-issues-demo hone/ember-api-docs).each do |repo|
+      dir = repo.split("/").last
+      sh "git clone https://github.com/#{repo}" unless Dir.exist?(dir)
+      sh "cd #{dir} && npm i"
+    end
+    FileUtils.mkdir_p("non-static")
+  end
+end
