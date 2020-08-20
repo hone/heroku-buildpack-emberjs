@@ -5,7 +5,7 @@ module Buildpack::Commands
     include Shell
 
     def self.detect(options)
-      options["test-compile"]
+      options[1] == "test-compile"
     end
 
     def initialize(output_io, error_io, build_dir, cache_dir, env_dir)

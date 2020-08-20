@@ -17,7 +17,7 @@ Usage:
   buildpack (-h | --help)
 USAGE
     def initialize(argv, output_io, error_io)
-      @options   = Docopt.parse(USAGE, argv)
+      @options    = ARGV
       @output_io = output_io.instance_eval do
         extend Buildpack::Messaging
       end
@@ -30,15 +30,15 @@ USAGE
       if Version.detect(@options)
         Version.new(@output_io, @error_io).run
       elsif Detect.detect(@options)
-        Detect.new(@output_io, @error_io, @options["<build-dir>"]).run
+        Detect.new(@output_io, @error_io, ARGV[2]).run
       elsif Compile.detect(@options)
-        Compile.new(@output_io, @error_io, @options["<build-dir>"], @options["<cache-dir>"], @options["<env-dir>"]).run
+        Compile.new(@output_io, @error_io, ARGV[2], ARGV[3], ARGV[4]).run
       elsif Release.detect(@options)
-        Release.new(@output_io, @error_io, @options["<build-dir>"]).run
+        Release.new(@output_io, @error_io, ARGV[2]).run
       elsif TestCompile.detect(@options)
-        TestCompile.new(@output_io, @error_io, @options["<build-dir>"], @options["<cache-dir>"], @options["<env-dir>"]).run
+        TestCompile.new(@output_io, @error_io, ARGV[2], ARGV[3], ARGV[4]).run
       elsif Test.detect(@options)
-        Test.new(@output_io, @error_io, @options["<build-dir>"], @options["<env-dir>"]).run
+        Test.new(@output_io, @error_io, ARGV[2], ARGV[3]).run
       else
         Help.new(@output_io, @error_io).run
       end

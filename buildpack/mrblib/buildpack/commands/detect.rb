@@ -1,7 +1,7 @@
 module Buildpack::Commands
   class Detect
     def self.detect(options)
-      options["detect"]
+      options[1] == "detect"
     end
 
     def initialize(output_io, error_io, build_dir)

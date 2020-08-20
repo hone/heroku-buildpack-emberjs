@@ -7,7 +7,7 @@ module Buildpack::Commands
     STATIC_JSON = "package.json"
 
     def self.detect(options)
-      options["compile"]
+      options[1] == "compile"
     end
 
     def initialize(output_io, error_io, build_dir, cache_dir, env_dir)

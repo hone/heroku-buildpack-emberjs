@@ -3,7 +3,7 @@ module Buildpack::Commands
     FILE_PATH = "tmp/heroku-buildpack-release.yml"
 
     def self.detect(options)
-      options["release"]
+      options[1] == "release"
     end
 
     def initialize(output_io, error_io, build_dir)

@@ -4,7 +4,6 @@ MRuby::Gem::Specification.new('buildpack') do |spec|
   spec.summary = 'buildpack'
   spec.bins    = ['buildpack']
 
-  spec.add_dependency 'mruby-docopt',            github:  'hone/mruby-docopt'
   spec.add_dependency 'mruby-env',               mgem:    'mruby-env'
   spec.add_dependency 'mruby-exit',              core:    'mruby-exit'
   spec.add_dependency 'mruby-fileutils-simple',  github:  'hone/mruby-fileutils-simple'
@@ -13,7 +12,7 @@ MRuby::Gem::Specification.new('buildpack') do |spec|
   spec.add_dependency 'mruby-json',              mgem:    'mruby-json'
   spec.add_dependency 'mruby-polarssl',          mgem:    'mruby-polarssl'
   spec.add_dependency 'mruby-tempfile',          mgem:    'mruby-tempfile'
-  spec.add_dependency 'mruby-yaml',              github:  'hone/mruby-yaml'
+  spec.add_dependency 'mruby-yaml',              mgem:    'mruby-yaml'
   spec.add_test_dependency 'mruby-mtest',        mgem:    'mruby-mtest'
   spec.add_test_dependency 'mruby-stringio',     mgem:    'mruby-stringio'
 end
